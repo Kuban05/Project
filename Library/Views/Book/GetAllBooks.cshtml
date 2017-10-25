@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Library.ViewModels.AddBookWithCategoryViewModel>
+
+@{
+    ViewBag.Title = "GetAllBooks";
+}
+
+<h2>Książki</h2>
+
+<p>
+    @Html.ActionLink("Stwórz nową", "Post")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Tytuł","GetAllBooks",new { sort = ViewBag.TitleSortParm})
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
+            @Html.ActionLink("Rok","GetAllBooks", new { sort=ViewBag.YearSortParm})
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Author)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author)
+        </td>
+        <td>
+            @Html.ActionLink("Edytuj", "Put", new { id= item.BookId }) |
+            @Html.ActionLink("Szczegóły", "Get", new { id=item.BookId }) |
+            @Html.ActionLink("Usuń", "Delete", new { id=item.BookId })
+        </td>
+    </tr>
+}
+
+</table>

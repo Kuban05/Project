@@ -1,0 +1,18 @@
+﻿
+<div style="padding-top: 20px;">
+    @using (Ajax.BeginForm(new AjaxOptions
+    {
+        Url = Url.Action("GetTitleByFilter", "Home"),
+        HttpMethod = "get",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "books"
+    }))
+    {
+        <input type="text" name="search" />
+        <input type="submit" value="Szukaj" />
+    }
+
+    <div id="books">
+        @Html.Action("GetTitleByFilter", "Home")
+    </div>
+</div>

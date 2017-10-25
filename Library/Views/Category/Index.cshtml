@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Library.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Kategorie:</h2>
+
+
+<table class="table">
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name) (Książek: @item.Books.Count())
+        </td>
+       
+    </tr>
+}
+
+</table>
